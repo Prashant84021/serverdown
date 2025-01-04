@@ -1,0 +1,48 @@
+ServerAttack is a type of denial-of-service (DoS) attack that targets web servers. It works by opening numerous connections to the target server and keeping them alive for as long as possible, preventing the server from processing legitimate requests. Here's how ServerAttack operates to cause a server down:
+
+1. Partial HTTP Requests
+
+ServerAttack sends partial HTTP headers to the target server.
+
+It deliberately avoids completing the requests, keeping the connection open.
+
+2. Connection Pool Exhaustion
+
+Web servers have a limited number of concurrent connections they can handle.
+
+By keeping these connections open and incomplete, ServerAttack exhausts the server's connection pool.
+
+3. Legitimate Requests Get Blocked
+
+Once the server's connection limit is reached, it cannot accept new connections from legitimate users.
+
+This leads to a denial of service for genuine users.
+
+4. Low Bandwidth Requirement
+
+Unlike other DoS attacks that flood the server with traffic, ServerAttack uses minimal bandwidth.
+
+It is stealthier and harder to detect compared to high-traffic attacks.
+
+Steps ServerAttack Follows:
+
+Establish multiple connections with the server.
+
+Send partial, incomplete HTTP headers to each connection.
+
+Periodically send tiny packets to keep the connection alive.
+
+Repeat until the server cannot handle further requests.
+
+Defense Against ServerAttack:
+
+Rate Limiting: Restrict the number of connections from a single IP.
+
+Timeouts: Set shorter timeouts for incomplete requests.
+
+Use a Web Application Firewall (WAF): Protect against such low-level attacks.
+
+Reverse Proxies: Tools like Nginx or Cloudflare can mitigate ServerAttack by handling connections efficiently.
+
+
+
